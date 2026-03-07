@@ -11,14 +11,14 @@
 <meta property="og:title" content="Sapling Reports">
 <meta property="og:description" content="Custom report and export bundles for Follett Aspen. Download ready-to-import .zip bundles for attendance reports, exports, and more.">
 <meta property="og:url" content="https://saplingreports.com/">
-<meta property="og:image" content="https://saplingreports.com/logo.png">
+<meta property="og:image" content="https://saplingreports.com/logos/logo.png">
 <meta property="og:site_name" content="Sapling Reports">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sapling Reports">
 <meta name="twitter:description" content="Custom report and export bundles for Follett Aspen.">
-<meta name="twitter:image" content="https://saplingreports.com/logo.png">
+<meta name="twitter:image" content="https://saplingreports.com/logos/logo.png">
 <title>Sapling Reports</title>
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="logos/logo.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -841,10 +841,6 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>Linux or macOS</strong></td>
-                <td>Claude Code runs natively on Linux and macOS. On Windows, use WSL2 (Ubuntu from the Microsoft Store).</td>
-              </tr>
-              <tr>
                 <td><strong>Node.js 18+</strong></td>
                 <td>Runtime for Claude Code. Install via <code>apt</code> or <a href="https://github.com/nvm-sh/nvm" style="color: #2a5db0;">nvm</a>.</td>
               </tr>
@@ -868,7 +864,7 @@
 
 <!-- Footer -->
 <footer class="site-footer">
-  <img id="footer-logo" src="logo.webp" alt="Sapling Reports Logo" style="height: 64px; border-radius: 4px; vertical-align: middle; margin-bottom: 6px;"><br>
+  <img id="footer-logo" src="logos/logo.webp" alt="Sapling Reports Logo" style="height: 64px; border-radius: 4px; vertical-align: middle; margin-bottom: 6px;"><br>
   Sapling Reports &copy; 2026 GLTHS <br> This site operates entirely independently. It is not owned, operated, maintained, or in any way officially connected to Follett Software. All product names, logos, and brands are the property of their respective owners. The use of such names does not imply any endorsement, certification, or partnership.
 
 </footer>
@@ -932,7 +928,7 @@ function setTheme(theme) {
   document.body.className = 'theme-' + theme;
   localStorage.setItem('sapling-theme', theme);
   var logo = document.getElementById('footer-logo');
-  if (logo) logo.src = theme === 'green' ? 'logo.webp' : 'logo-' + theme + '.webp';
+  if (logo) logo.src = theme === 'green' ? 'logos/logo.webp' : 'logos/logo-' + theme + '.webp';
   var badge = document.getElementById('visitor-badge');
   var bc = badgeColors[theme] || badgeColors.green;
   if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color + '&hit=true';
@@ -945,7 +941,7 @@ function setTheme(theme) {
     var sel = document.getElementById('theme-select');
     if (sel) sel.value = saved;
     var logo = document.getElementById('footer-logo');
-    if (logo) logo.src = saved === 'green' ? 'logo.webp' : 'logo-' + saved + '.webp';
+    if (logo) logo.src = saved === 'green' ? 'logos/logo.webp' : 'logos/logo-' + saved + '.webp';
     var badge = document.getElementById('visitor-badge');
     var bc = badgeColors[saved] || badgeColors.green;
     if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color + '&hit=true';

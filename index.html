@@ -401,7 +401,7 @@
   <li role="presentation"><button role="tab" aria-selected="true" aria-controls="page-home" id="tab-home" onclick="showPage('home')">Home</button></li>
   <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-reports" id="tab-reports" onclick="showPage('reports')">Reports</button></li>
   <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-exports" id="tab-exports" onclick="showPage('exports')">Exports</button></li>
-  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-bundles" id="tab-bundles" onclick="showPage('bundles')">Bundles</button></li>
+
 </ul>
 </nav>
 
@@ -421,10 +421,6 @@
     <button id="side-exports" onclick="showPage('exports')" tabindex="-1">
       <span class="icon">E</span>
       Exports
-    </button>
-    <button id="side-bundles" onclick="showPage('bundles')" tabindex="-1">
-      <span class="icon">B</span>
-      Bundles
     </button>
     <div style="padding: 10px 4px; text-align: center;">
       <img id="visitor-badge" src="https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%232a5018&amp;color=%233d6b24&amp;hit=true" alt="" style="max-width: 100%;">
@@ -460,10 +456,6 @@
 
       <div class="info-row">
         <dl class="info-card">
-          <dt>Total Bundles</dt>
-          <dd>4</dd>
-        </dl>
-        <dl class="info-card">
           <dt>Reports (PDF)</dt>
           <dd>2</dd>
         </dl>
@@ -493,20 +485,16 @@
                 <td><a href="#" onclick="showPage('exports'); return false;" class="btn-download">Exports</a></td>
                 <td>Custom CSV exports deployed as Aspen bundles. Exports use a Java data source that returns tabular data directly; no JRXML layout needed.</td>
               </tr>
-              <tr>
-                <td><a href="#" onclick="showPage('bundles'); return false;" class="btn-download">Bundles</a></td>
-                <td>Download page for all bundle <code>.zip</code> files. Import these into Aspen via Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle.</td>
-              </tr>
             </tbody>
           </table>
         </div>
       </section>
 
       <section class="panel">
-        <h2>Quick Reference - All Bundles</h2>
+        <h2>Latest Release</h2>
         <div class="panel-body">
           <table>
-            <caption class="sr-only">All custom reports and exports at a glance</caption>
+            <caption class="sr-only">Most recently released bundle</caption>
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -516,24 +504,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>SR-ATT-POLICY</td>
-                <td><a href="#" onclick="showPage('exports'); return false;" class="btn-download">GLTHS Attendance Policy Unexcused Absence Export</a></td>
-                <td><span class="badge badge-export">Export</span></td>
-                <td>1.0.0</td>
-              </tr>
-              <tr>
-                <td>SR-ATT-CLASS</td>
-                <td><a href="#" onclick="showPage('reports'); return false;" class="btn-download">Class Attendance with Large Photos</a></td>
-                <td><span class="badge badge-report">Report</span></td>
-                <td>1.0.0</td>
-              </tr>
-              <tr>
-                <td>SR-ATT-HOMEROOM</td>
-                <td><a href="#" onclick="showPage('reports'); return false;" class="btn-download">Homeroom Attendance with Large Photos</a></td>
-                <td><span class="badge badge-report">Report</span></td>
-                <td>1.0.0</td>
-              </tr>
               <tr>
                 <td>SR-SYS-SCHEMA</td>
                 <td><a href="#" onclick="showPage('exports'); return false;" class="btn-download">Schema &amp; Term Reference Export</a></td>
@@ -691,77 +661,7 @@
 
     </div>
 
-    <!-- ==================== BUNDLES PAGE ==================== -->
-    <div id="page-bundles" class="tab-panel" role="tabpanel" aria-labelledby="tab-bundles" hidden>
 
-      <p class="breadcrumb">
-        <a href="#" onclick="showPage('home'); return false;" class="crumb">Home</a> <span class="crumb-sep">&rsaquo;</span> <span class="crumb">Bundles</span>
-      </p>
-
-      <div class="info-row">
-        <dl class="info-card">
-          <dt>Total Bundles</dt>
-          <dd>4</dd>
-        </dl>
-        <dl class="info-card">
-          <dt>Reports (PDF)</dt>
-          <dd>2</dd>
-        </dl>
-        <dl class="info-card">
-          <dt>Exports (CSV)</dt>
-          <dd>2</dd>
-        </dl>
-      </div>
-
-      <section class="panel">
-        <h2>All Bundles - Download</h2>
-        <div class="panel-body">
-          <table>
-            <caption class="sr-only">All available bundle downloads</caption>
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Type</th>
-                <th scope="col">Version</th>
-                <th scope="col">Bundle (.zip)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>SR-ATT-POLICY</td>
-                <td>GLTHS Attendance Policy Unexcused Absence Export</td>
-                <td><span class="badge badge-export">Export</span></td>
-                <td>1.0.0</td>
-                <td><a href="https://github.com/AYJAYY/sapling-reports/raw/main/Attendance%20Policy.zip" class="btn-download">Download SR-ATT-POLICY</a></td>
-              </tr>
-              <tr>
-                <td>SR-ATT-CLASS</td>
-                <td>Class Attendance with Large Photos</td>
-                <td><span class="badge badge-report">Report</span></td>
-                <td>1.0.0</td>
-                <td><a href="https://github.com/AYJAYY/sapling-reports/raw/main/ClassAttendancePhoto.zip" class="btn-download">Download SR-ATT-CLASS</a></td>
-              </tr>
-              <tr>
-                <td>SR-ATT-HOMEROOM</td>
-                <td>Homeroom Attendance with Large Photos</td>
-                <td><span class="badge badge-report">Report</span></td>
-                <td>1.0.0</td>
-                <td><a href="https://github.com/AYJAYY/sapling-reports/raw/main/HomeroomAttendancePhoto.zip" class="btn-download">Download SR-ATT-HOMEROOM</a></td>
-              </tr>
-              <tr>
-                <td>SR-SYS-SCHEMA</td>
-                <td>Schema &amp; Term Reference Export</td>
-                <td><span class="badge badge-export">Export</span></td>
-                <td>1.0.0</td>
-                <td><a href="https://github.com/AYJAYY/sapling-reports/raw/main/DEVResources.zip" class="btn-download">Download SR-SYS-SCHEMA</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-    </div>
 
   </main>
 </div>
@@ -807,7 +707,7 @@ function setTheme(theme) {
 })();
 
 function showPage(page) {
-  var pages = ['home', 'reports', 'exports', 'bundles'];
+  var pages = ['home', 'reports', 'exports'];
 
   pages.forEach(function(p) {
     // Toggle tab panels

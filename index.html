@@ -7,6 +7,44 @@
 <link rel="icon" type="image/png" href="logo.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* Color scheme variables */
+  :root, body.theme-green {
+    --primary: #3d6b24;
+    --primary-dark: #2a5018;
+    --primary-hover: #345e1f;
+    --primary-light: #e8f5e0;
+    --primary-light2: #d4ecc4;
+  }
+  body.theme-blue {
+    --primary: #2a5db0;
+    --primary-dark: #1e4a8a;
+    --primary-hover: #244f96;
+    --primary-light: #e0e8f5;
+    --primary-light2: #c4d4ec;
+  }
+  body.theme-orange {
+    --primary: #a85400;
+    --primary-dark: #7a3d00;
+    --primary-hover: #904800;
+    --primary-light: #f5ead8;
+    --primary-light2: #ecd8b8;
+  }
+  body.theme-red {
+    --primary: #8b1a1a;
+    --primary-dark: #6b1010;
+    --primary-hover: #7a1515;
+    --primary-light: #f5e0e0;
+    --primary-light2: #ecc4c4;
+  }
+  body.theme-purple {
+    --primary: #5b2d8e;
+    --primary-dark: #462170;
+    --primary-hover: #4e277a;
+    --primary-light: #ede0f5;
+    --primary-light2: #d8c4ec;
+  }
+
   body { font-family: Arial, Helvetica, sans-serif; font-size: 0.8125rem; line-height: 1.5; color: #333; background: #f4f4f4; }
 
   /* Focus styles for keyboard navigation */
@@ -17,7 +55,7 @@
 
   /* Header bar */
   .site-header {
-    background: linear-gradient(to bottom, #3d6b24, #2a5018);
+    background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
     color: #fff;
     padding: 8px 16px;
     display: flex;
@@ -32,7 +70,7 @@
   /* Top nav tabs */
   .top-nav {
     background: #e8e8e8;
-    border-bottom: 2px solid #2a5018;
+    border-bottom: 2px solid var(--primary-dark);
     display: flex;
     padding: 0 8px;
     list-style: none;
@@ -41,7 +79,7 @@
     display: inline-block;
     padding: 6px 16px;
     margin-right: 2px;
-    background: #3d6b24;
+    background: var(--primary);
     color: #fff;
     border: none;
     font-size: 0.75rem;
@@ -51,8 +89,8 @@
     cursor: pointer;
     font-family: inherit;
   }
-  .top-nav button:hover { background: #345e1f; }
-  .top-nav button[aria-selected="true"] { background: #2a5018; }
+  .top-nav button:hover { background: var(--primary-hover); }
+  .top-nav button[aria-selected="true"] { background: var(--primary-dark); }
 
   /* Layout */
   .layout {
@@ -84,13 +122,13 @@
     border-bottom: 1px solid #eee;
     cursor: pointer;
   }
-  .sidebar button:hover { background: #e8f5e0; }
-  .sidebar button.active { background: #d4ecc4; font-weight: bold; }
+  .sidebar button:hover { background: var(--primary-light); }
+  .sidebar button.active { background: var(--primary-light2); font-weight: bold; }
   .sidebar .icon {
     width: 32px;
     height: 32px;
     margin-bottom: 4px;
-    background: #3d6b24;
+    background: var(--primary);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -115,7 +153,7 @@
     overflow: hidden;
   }
   section.panel h2, section.panel h3 {
-    background: linear-gradient(to bottom, #3d6b24, #2a5018);
+    background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
     color: #fff;
     padding: 6px 12px;
     font-size: 0.8125rem;
@@ -162,7 +200,7 @@
     padding: 6px 10px;
   }
   table tr:nth-child(even) { background: #f9f9f9; }
-  table tr:hover { background: #e8f5e0; }
+  table tr:hover { background: var(--primary-light); }
 
   /* Links */
   table a {
@@ -198,10 +236,10 @@
     border-radius: 3px;
     font-weight: bold;
     color: #fff;
-    background: #3d6b24;
+    background: var(--primary);
   }
-  .breadcrumb a.crumb { text-decoration: none; background: #2a5db0; }
-  .breadcrumb a.crumb:hover { background: #1e4a8a; }
+  .breadcrumb a.crumb { text-decoration: none; background: var(--primary-dark); }
+  .breadcrumb a.crumb:hover { background: var(--primary-hover); }
   .breadcrumb .crumb-sep { color: #666; font-weight: bold; }
 
   /* Info box */
@@ -220,7 +258,7 @@
     padding: 10px 14px;
   }
   .info-card dt { font-size: 0.6875rem; color: #666; text-transform: uppercase; margin-bottom: 4px; }
-  .info-card dd { font-size: 1.125rem; font-weight: bold; color: #2a5018; margin: 0; }
+  .info-card dd { font-size: 1.125rem; font-weight: bold; color: var(--primary-dark); margin: 0; }
 
   /* Disclaimer banner */
   .disclaimer {
@@ -255,6 +293,13 @@
   <h1>Sapling Reports</h1>
   <div class="user-info">
     Bundle View
+    <select id="theme-select" aria-label="Color scheme" onchange="setTheme(this.value)" style="margin-left: 12px; font-size: 0.75rem; padding: 2px 4px; border-radius: 3px; border: 1px solid #ccc;">
+      <option value="green">Green</option>
+      <option value="blue">Blue</option>
+      <option value="orange">Orange</option>
+      <option value="red">Red</option>
+      <option value="purple">Purple</option>
+    </select>
   </div>
 </header>
 
@@ -578,6 +623,20 @@
 </footer>
 
 <script>
+function setTheme(theme) {
+  document.body.className = 'theme-' + theme;
+  localStorage.setItem('sapling-theme', theme);
+}
+
+(function() {
+  var saved = localStorage.getItem('sapling-theme');
+  if (saved) {
+    document.body.className = 'theme-' + saved;
+    var sel = document.getElementById('theme-select');
+    if (sel) sel.value = saved;
+  }
+})();
+
 function showPage(page) {
   var pages = ['home', 'reports', 'exports', 'bundles'];
 

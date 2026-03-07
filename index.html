@@ -801,12 +801,16 @@
         <div class="panel-body">
           <ol style="margin: 0; padding-left: 20px; line-height: 1.8; font-size: 0.8125rem;">
             <li style="margin-bottom: 12px;">
-              <strong>Clone the repository and install Claude Code</strong><br>
-              Clone the repo to your machine with <code>git clone</code>. Install Claude Code globally by running <code>npm install -g @anthropic-ai/claude-code</code>. Then open a terminal in the project directory and run <code>claude</code> to start a session. Claude Code will automatically read the included <code>CLAUDE.md</code> files and understand the entire Aspen report architecture.
+              <strong>Download and extract ClaudeReports.zip</strong><br>
+              Download the zip using the button above and extract it to a folder on your machine. This becomes your working directory. Initialize a git repo inside it with <code>git init</code> so Claude Code can track changes and commit your work.
+            </li>
+            <li style="margin-bottom: 12px;">
+              <strong>Install and launch Claude Code</strong><br>
+              Install Claude Code globally by running <code>npm install -g @anthropic-ai/claude-code</code>. Open a terminal in your extracted folder and run <code>claude</code> to start a session. Claude Code will automatically read the included <code>CLAUDE.md</code> files and understand the entire Aspen report architecture.
             </li>
             <li style="margin-bottom: 12px;">
               <strong>Export your district's database schema</strong><br>
-              The repo includes a ready-to-use Aspen export called <strong>DEVResources</strong> (<code>Exports/DEVResources/DEVResources.zip</code>). Import it into Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong>, then run it from <strong>Tools &rarr; Exports</strong>. It can export your Data Dictionary schema, grade term maps, and schedule term data as CSV files. Add those CSVs to <code>BuildResources/</code> so Claude Code knows your district's custom fields.
+              The zip includes a ready-to-use Aspen export called <strong>DEVResources</strong> (<code>Exports/DEVResources/DEVResources.zip</code>). Import it into Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong>, then run it from <strong>Tools &rarr; Exports</strong>. It can export your Data Dictionary schema, grade term maps, and schedule term data as CSV files. Add those CSVs to <code>BuildResources/</code> so Claude Code knows your district's custom fields.
             </li>
             <li style="margin-bottom: 12px;">
               <strong>Describe what you need in plain English</strong><br>
@@ -814,7 +818,7 @@
             </li>
             <li style="margin-bottom: 12px;">
               <strong>Upload the generated bundle to Aspen</strong><br>
-              Claude Code writes all the Java, JRXML, and XML files, packages them into a <code>.zip</code> bundle, and commits to the repo. Upload the zip to Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong> and run your new report.
+              Claude Code writes all the Java, JRXML, and XML files and packages them into a <code>.zip</code> bundle. Upload the zip to Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong> and run your new report.
             </li>
             <li>
               <strong>Iterate when things break</strong><br>

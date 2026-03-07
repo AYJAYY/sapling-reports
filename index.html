@@ -809,6 +809,10 @@
               Install Claude Code globally by running <code>npm install -g @anthropic-ai/claude-code</code>. Open a terminal in your extracted folder and run <code>claude</code> to start a session. Claude Code will automatically read the included <code>CLAUDE.md</code> files and understand the entire Aspen report architecture.
             </li>
             <li style="margin-bottom: 12px;">
+              <strong>Export example report bundles from your system</strong><br>
+              In Aspen, go to <strong>Admin &rarr; Tools &rarr; Exports/Reports</strong>, select 3 to 5 existing report bundles, and export them. Extract the contents into the <code>Report Examples/</code> folder in your working directory. These give Claude Code real examples of how your district's reports are structured.
+            </li>
+            <li style="margin-bottom: 12px;">
               <strong>Export your district's database schema</strong><br>
               The zip includes a ready-to-use Aspen export called <strong>DEVResources</strong> (<code>Exports/DEVResources/DEVResources.zip</code>). Import it into Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong>, then run it from <strong>Tools &rarr; Exports</strong>. It can export your Data Dictionary schema, grade term maps, and schedule term data as CSV files. Add those CSVs to <code>BuildResources/</code> so Claude Code knows your district's custom fields.
             </li>

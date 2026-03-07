@@ -427,7 +427,7 @@
       Bundles
     </button>
     <div style="padding: 10px 4px; text-align: center;">
-      <img src="https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%231f1f1f&amp;color=%23000000&amp;hit=true" alt="" style="max-width: 100%;">
+      <img id="visitor-badge" src="https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%232a5018&amp;color=%233d6b24&amp;hit=true" alt="" style="max-width: 100%;">
     </div>
   </div>
 
@@ -753,11 +753,22 @@
 </footer>
 
 <script>
+var badgeColors = {
+  green:  { label: '2a5018', color: '3d6b24' },
+  blue:   { label: '1e4a8a', color: '2a5db0' },
+  orange: { label: '7a3d00', color: 'a85400' },
+  red:    { label: '6b1010', color: '8b1a1a' },
+  purple: { label: '462170', color: '5b2d8e' }
+};
+
 function setTheme(theme) {
   document.body.className = 'theme-' + theme;
   localStorage.setItem('sapling-theme', theme);
   var logo = document.getElementById('footer-logo');
   if (logo) logo.src = theme === 'green' ? 'logo.webp' : 'logo-' + theme + '.webp';
+  var badge = document.getElementById('visitor-badge');
+  var bc = badgeColors[theme] || badgeColors.green;
+  if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color;
 }
 
 (function() {
@@ -768,6 +779,9 @@ function setTheme(theme) {
     if (sel) sel.value = saved;
     var logo = document.getElementById('footer-logo');
     if (logo) logo.src = saved === 'green' ? 'logo.webp' : 'logo-' + saved + '.webp';
+    var badge = document.getElementById('visitor-badge');
+    var bc = badgeColors[saved] || badgeColors.green;
+    if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color;
   }
 })();
 

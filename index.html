@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="logo.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #333; background: #f4f4f4; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 0.8125rem; line-height: 1.5; color: #333; background: #f4f4f4; }
 
   /* Focus styles for keyboard navigation */
   :focus-visible {
@@ -17,22 +17,22 @@
 
   /* Header bar */
   .site-header {
-    background: linear-gradient(to bottom, #5a8a3c, #3d6b24);
+    background: linear-gradient(to bottom, #3d6b24, #2a5018);
     color: #fff;
     padding: 8px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .site-header h1 { font-size: 16px; font-weight: bold; letter-spacing: 0.5px; }
-  .site-header .user-info { font-size: 12px; }
+  .site-header h1 { font-size: 1rem; font-weight: bold; letter-spacing: 0.5px; }
+  .site-header .user-info { font-size: 0.75rem; }
   .site-header .user-info a { color: #cde6bb; text-decoration: none; margin-left: 12px; }
   .site-header .user-info a:hover { text-decoration: underline; }
 
   /* Top nav tabs */
   .top-nav {
     background: #e8e8e8;
-    border-bottom: 2px solid #3d6b24;
+    border-bottom: 2px solid #2a5018;
     display: flex;
     padding: 0 8px;
     list-style: none;
@@ -41,18 +41,18 @@
     display: inline-block;
     padding: 6px 16px;
     margin-right: 2px;
-    background: #5a8a3c;
+    background: #3d6b24;
     color: #fff;
     border: none;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: bold;
     border-radius: 4px 4px 0 0;
     margin-top: 4px;
     cursor: pointer;
     font-family: inherit;
   }
-  .top-nav button:hover { background: #4a7a2e; }
-  .top-nav button[aria-selected="true"] { background: #3d6b24; }
+  .top-nav button:hover { background: #345e1f; }
+  .top-nav button[aria-selected="true"] { background: #2a5018; }
 
   /* Layout */
   .layout {
@@ -78,7 +78,7 @@
     background: none;
     border: none;
     color: #333;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-family: inherit;
     text-align: center;
     border-bottom: 1px solid #eee;
@@ -90,13 +90,13 @@
     width: 32px;
     height: 32px;
     margin-bottom: 4px;
-    background: #5a8a3c;
+    background: #3d6b24;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
   }
 
@@ -115,10 +115,10 @@
     overflow: hidden;
   }
   section.panel h2, section.panel h3 {
-    background: linear-gradient(to bottom, #5a8a3c, #4a7a2e);
+    background: linear-gradient(to bottom, #3d6b24, #2a5018);
     color: #fff;
     padding: 6px 12px;
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: bold;
   }
   .panel-body { padding: 12px; }
@@ -127,13 +127,13 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   table caption {
     text-align: left;
     font-weight: bold;
     padding: 4px 0;
-    font-size: 11px;
+    font-size: 0.6875rem;
     color: #666;
     caption-side: top;
   }
@@ -176,7 +176,7 @@
     display: inline-block;
     padding: 2px 8px;
     border-radius: 3px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: bold;
     color: #fff;
   }
@@ -185,7 +185,7 @@
 
   /* Breadcrumb */
   .breadcrumb {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: #666;
     padding: 8px 0;
     margin-bottom: 8px;
@@ -208,8 +208,8 @@
     border-radius: 3px;
     padding: 10px 14px;
   }
-  .info-card dt { font-size: 11px; color: #666; text-transform: uppercase; margin-bottom: 4px; }
-  .info-card dd { font-size: 18px; font-weight: bold; color: #3d6b24; margin: 0; }
+  .info-card dt { font-size: 0.6875rem; color: #666; text-transform: uppercase; margin-bottom: 4px; }
+  .info-card dd { font-size: 1.125rem; font-weight: bold; color: #2a5018; margin: 0; }
 
   /* Disclaimer banner */
   .disclaimer {
@@ -218,7 +218,7 @@
     border-radius: 4px;
     padding: 14px 18px;
     margin-bottom: 16px;
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.6;
     color: #664d03;
   }
@@ -230,7 +230,7 @@
   .site-footer {
     text-align: center;
     padding: 12px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     color: #999;
     border-top: 1px solid #ddd;
     background: #fff;
@@ -249,12 +249,14 @@
 </header>
 
 <!-- Top Navigation -->
-<ul class="top-nav" role="tablist" aria-label="Site sections">
+<nav aria-label="Site sections">
+<ul class="top-nav" role="tablist">
   <li role="presentation"><button role="tab" aria-selected="true" aria-controls="page-home" id="tab-home" onclick="showPage('home')">Home</button></li>
   <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-reports" id="tab-reports" onclick="showPage('reports')">Reports</button></li>
   <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-exports" id="tab-exports" onclick="showPage('exports')">Exports</button></li>
   <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-bundles" id="tab-bundles" onclick="showPage('bundles')">Bundles</button></li>
 </ul>
+</nav>
 
 <!-- Layout -->
 <div class="layout">

@@ -649,7 +649,7 @@
 
 <!-- Footer -->
 <footer class="site-footer">
-  <img src="logo.png" alt="Sapling Reports Logo" style="height: 36px; border-radius: 4px; vertical-align: middle; margin-bottom: 6px;"><br>
+  <img id="footer-logo" src="logo.png" alt="Sapling Reports Logo" style="height: 36px; border-radius: 4px; vertical-align: middle; margin-bottom: 6px;"><br>
   Sapling Reports <br> This site operates entirely independently. It is not owned, operated, maintained, or in any way officially connected to Follett Software. All product names, logos, and brands are the property of their respective owners. The use of such names does not imply any endorsement, certification, or partnership.
 </footer>
 
@@ -657,6 +657,8 @@
 function setTheme(theme) {
   document.body.className = 'theme-' + theme;
   localStorage.setItem('sapling-theme', theme);
+  var logo = document.getElementById('footer-logo');
+  if (logo) logo.src = theme === 'green' ? 'logo.png' : 'logo-' + theme + '.png';
 }
 
 (function() {
@@ -665,6 +667,8 @@ function setTheme(theme) {
     document.body.className = 'theme-' + saved;
     var sel = document.getElementById('theme-select');
     if (sel) sel.value = saved;
+    var logo = document.getElementById('footer-logo');
+    if (logo) logo.src = saved === 'green' ? 'logo.png' : 'logo-' + saved + '.png';
   }
 })();
 

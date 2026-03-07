@@ -754,7 +754,7 @@
             You don't need to read the guides yourself. They exist so the AI produces correct, working code on the first try.
           </p>
           <p style="line-height: 1.6;">
-            <a href="https://github.com/AYJAYY/aspen-report-builder" class="btn-download" style="font-size: 0.8125rem; padding: 6px 16px;">View Repository on GitHub</a>
+            <a href="https://github.com/AYJAYY/sapling-reports/raw/main/ClaudeReports.zip" class="btn-download" style="font-size: 0.8125rem; padding: 6px 16px;">Download ClaudeReports.zip</a>
           </p>
         </div>
       </section>
@@ -799,37 +799,28 @@
       <section class="panel">
         <h2>How It Works</h2>
         <div class="panel-body">
-          <table>
-            <caption class="sr-only">Steps to build a report using AI</caption>
-            <thead>
-              <tr>
-                <th scope="col">Step</th>
-                <th scope="col">What You Do</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>1. Clone &amp; setup</strong></td>
-                <td>Clone the repository, install Claude Code (<code>npm install -g @anthropic-ai/claude-code</code>), and run <code>claude</code> in the project directory.</td>
-              </tr>
-              <tr>
-                <td><strong>2. Export your schema</strong></td>
-                <td>Import the included DEVResources export into Aspen and run it to generate your district's field definitions. Add the CSVs to <code>BuildResources/</code>.</td>
-              </tr>
-              <tr>
-                <td><strong>3. Describe your report</strong></td>
-                <td>Tell Claude Code what data you need, what filters to include, which Aspen view it runs from, and whether it's a PDF report or CSV export.</td>
-              </tr>
-              <tr>
-                <td><strong>4. Upload to Aspen</strong></td>
-                <td>Import the generated <code>.zip</code> bundle via Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle.</td>
-              </tr>
-              <tr>
-                <td><strong>5. Iterate</strong></td>
-                <td>If something breaks, paste the exact error from Aspen's job log. Claude Code diagnoses the issue and rebuilds the bundle.</td>
-              </tr>
-            </tbody>
-          </table>
+          <ol style="margin: 0; padding-left: 20px; line-height: 1.8; font-size: 0.8125rem;">
+            <li style="margin-bottom: 12px;">
+              <strong>Clone the repository and install Claude Code</strong><br>
+              Clone the repo to your machine with <code>git clone</code>. Install Claude Code globally by running <code>npm install -g @anthropic-ai/claude-code</code>. Then open a terminal in the project directory and run <code>claude</code> to start a session. Claude Code will automatically read the included <code>CLAUDE.md</code> files and understand the entire Aspen report architecture.
+            </li>
+            <li style="margin-bottom: 12px;">
+              <strong>Export your district's database schema</strong><br>
+              The repo includes a ready-to-use Aspen export called <strong>DEVResources</strong> (<code>Exports/DEVResources/DEVResources.zip</code>). Import it into Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong>, then run it from <strong>Tools &rarr; Exports</strong>. It can export your Data Dictionary schema, grade term maps, and schedule term data as CSV files. Add those CSVs to <code>BuildResources/</code> so Claude Code knows your district's custom fields.
+            </li>
+            <li style="margin-bottom: 12px;">
+              <strong>Describe what you need in plain English</strong><br>
+              Tell Claude Code what report or export you want. Include details like output format (PDF or CSV), what data to pull, any filters the user should see, how records should be grouped, and which Aspen view and navigation tab it runs from. The more context you give, the better the result.
+            </li>
+            <li style="margin-bottom: 12px;">
+              <strong>Upload the generated bundle to Aspen</strong><br>
+              Claude Code writes all the Java, JRXML, and XML files, packages them into a <code>.zip</code> bundle, and commits to the repo. Upload the zip to Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong> and run your new report.
+            </li>
+            <li>
+              <strong>Iterate when things break</strong><br>
+              Aspen compiles Java and JRXML server-side, so errors only appear at runtime. Copy the exact error from Aspen's job log and paste it into Claude Code. It will diagnose the issue, fix the code, and rebuild the bundle. Common issues include missing API methods, wrong field names, or criteria that return no data.
+            </li>
+          </ol>
         </div>
       </section>
 

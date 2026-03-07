@@ -462,7 +462,7 @@
   <li role="presentation"><button role="tab" aria-selected="true" aria-controls="page-home" id="tab-home" onclick="showPage('home')">Home</button></li>
   <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-reports" id="tab-reports" onclick="showPage('reports')">Reports</button></li>
   <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-exports" id="tab-exports" onclick="showPage('exports')">Exports</button></li>
-
+  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-build" id="tab-build" onclick="showPage('build')">Build Your Own</button></li>
 </ul>
 </nav>
 
@@ -482,6 +482,10 @@
     <button id="side-exports" onclick="showPage('exports')" tabindex="-1">
       <span class="icon">E</span>
       Exports
+    </button>
+    <button id="side-build" onclick="showPage('build')" tabindex="-1">
+      <span class="icon">B</span>
+      Build
     </button>
     <div style="padding: 10px 4px; text-align: center;">
       <img id="visitor-badge" src="https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%232a5018&amp;color=%233d6b24&amp;hit=true" alt="" style="max-width: 100%;">
@@ -549,6 +553,10 @@
               <tr>
                 <td><a href="#" onclick="showPage('exports'); return false;" class="btn-download">Exports</a></td>
                 <td>Custom exports deployed as Aspen bundles. Exports use a Java data source that returns tabular data directly; no JRXML layout needed.</td>
+              </tr>
+              <tr>
+                <td><a href="#" onclick="showPage('build'); return false;" class="btn-download">Build Your Own</a></td>
+                <td>Use AI to generate and modify your own Aspen X2 reports and exports. An open-source repository with development guides, templates, working examples, and a schema export utility.</td>
               </tr>
             </tbody>
           </table>
@@ -726,7 +734,139 @@
 
     </div>
 
+    <!-- ==================== BUILD YOUR OWN PAGE ==================== -->
+    <div id="page-build" class="tab-panel" role="tabpanel" aria-labelledby="tab-build" hidden>
 
+      <p class="breadcrumb">
+        <a href="#" onclick="showPage('home'); return false;" class="crumb">Home</a> <span class="crumb-sep">&rsaquo;</span> <span class="crumb">Build Your Own</span>
+      </p>
+
+      <section class="panel">
+        <h2>Build Your Own Aspen Reports with AI</h2>
+        <div class="panel-body">
+          <p style="margin-bottom: 10px; line-height: 1.6;">
+            This open-source repository contains everything you need to generate and modify custom <strong>Follett Aspen X2</strong> reports and exports using <strong>Claude Code</strong>, without writing code by hand.
+          </p>
+          <p style="margin-bottom: 10px; line-height: 1.6;">
+            Describe what you want in plain English. Claude Code reads the included development guides, writes the Java, JRXML, and XML files, packages the bundle, and commits it to your repo. When something breaks on upload, paste the error and it fixes it.
+          </p>
+          <p style="margin-bottom: 10px; line-height: 1.6;">
+            You don't need to read the guides yourself. They exist so the AI produces correct, working code on the first try.
+          </p>
+          <p style="line-height: 1.6;">
+            <a href="https://github.com/AYJAYY/aspen-report-builder" class="btn-download" style="font-size: 0.8125rem; padding: 6px 16px;">View Repository on GitHub</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>What's Included</h2>
+        <div class="panel-body">
+          <table>
+            <caption class="sr-only">Contents of the Build Your Own repository</caption>
+            <thead>
+              <tr>
+                <th scope="col">Resource</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Development Guide</strong></td>
+                <td>9 detailed guide files covering architecture, database schema, Java data sources, JRXML layout, input definitions, best practices, and 30+ documented troubleshooting issues.</td>
+              </tr>
+              <tr>
+                <td><strong>Templates</strong></td>
+                <td>Skeleton starter files (Java, JRXML, Input XML, bundle-definition) to copy and rename when beginning a new report.</td>
+              </tr>
+              <tr>
+                <td><strong>Working Examples</strong></td>
+                <td>3 complete report examples at complexity levels 1, 3, and 4 for structural reference.</td>
+              </tr>
+              <tr>
+                <td><strong>DEVResources Export</strong></td>
+                <td>A bundled Aspen export (SR-SYS-SCHEMA) that auto-generates your district's database schema, grade term maps, and schedule term data as CSV. Import it into Aspen, run it, and add the output to your repo so Claude Code knows your custom fields.</td>
+              </tr>
+              <tr>
+                <td><strong>CLAUDE.md Files</strong></td>
+                <td>Instructions that Claude Code reads automatically each session, providing full context on report architecture, key conventions, and API patterns.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>How It Works</h2>
+        <div class="panel-body">
+          <table>
+            <caption class="sr-only">Steps to build a report using AI</caption>
+            <thead>
+              <tr>
+                <th scope="col">Step</th>
+                <th scope="col">What You Do</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Clone &amp; setup</strong></td>
+                <td>Clone the repository, install Claude Code (<code>npm install -g @anthropic-ai/claude-code</code>), and run <code>claude</code> in the project directory.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Export your schema</strong></td>
+                <td>Import the included DEVResources export into Aspen and run it to generate your district's field definitions. Add the CSVs to <code>BuildResources/</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Describe your report</strong></td>
+                <td>Tell Claude Code what data you need, what filters to include, which Aspen view it runs from, and whether it's a PDF report or CSV export.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Upload to Aspen</strong></td>
+                <td>Import the generated <code>.zip</code> bundle via Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle.</td>
+              </tr>
+              <tr>
+                <td><strong>5. Iterate</strong></td>
+                <td>If something breaks, paste the exact error from Aspen's job log. Claude Code diagnoses the issue and rebuilds the bundle.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Prerequisites</h2>
+        <div class="panel-body">
+          <table>
+            <caption class="sr-only">Required software and accounts</caption>
+            <thead>
+              <tr>
+                <th scope="col">Requirement</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Linux or macOS</strong></td>
+                <td>Claude Code runs natively on Linux and macOS. On Windows, use WSL2 (Ubuntu from the Microsoft Store).</td>
+              </tr>
+              <tr>
+                <td><strong>Node.js 18+</strong></td>
+                <td>Runtime for Claude Code. Install via <code>apt</code> or <a href="https://github.com/nvm-sh/nvm" style="color: #2a5db0;">nvm</a>.</td>
+              </tr>
+              <tr>
+                <td><strong>Git</strong></td>
+                <td>Version control for managing your reports repository.</td>
+              </tr>
+              <tr>
+                <td><strong>Anthropic Account</strong></td>
+                <td>Claude Pro subscription ($20/mo) or an API key with credits at <a href="https://console.anthropic.com" style="color: #2a5db0;">console.anthropic.com</a>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
 
   </main>
 </div>
@@ -818,7 +958,7 @@ function setTheme(theme) {
 })();
 
 function showPage(page) {
-  var pages = ['home', 'reports', 'exports'];
+  var pages = ['home', 'reports', 'exports', 'build'];
 
   pages.forEach(function(p) {
     // Toggle tab panels

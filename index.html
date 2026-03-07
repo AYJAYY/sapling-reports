@@ -768,7 +768,7 @@ function setTheme(theme) {
   if (logo) logo.src = theme === 'green' ? 'logo.webp' : 'logo-' + theme + '.webp';
   var badge = document.getElementById('visitor-badge');
   var bc = badgeColors[theme] || badgeColors.green;
-  if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color;
+  if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color + '&hit=true';
 }
 
 (function() {
@@ -781,7 +781,7 @@ function setTheme(theme) {
     if (logo) logo.src = saved === 'green' ? 'logo.webp' : 'logo-' + saved + '.webp';
     var badge = document.getElementById('visitor-badge');
     var bc = badgeColors[saved] || badgeColors.green;
-    if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color;
+    if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color + '&hit=true';
   }
 })();
 

@@ -88,7 +88,7 @@
   .site-header {
     background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
     color: #fff;
-    padding: 10px 18px;
+    padding: 18px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -372,6 +372,55 @@
     .disclaimer { padding: 10px 12px; }
   }
 
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: #fff;
+    border-radius: 6px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+  .modal-header {
+    background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+    color: #fff;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .modal-header h2 { font-size: 0.875rem; margin: 0; }
+  .modal-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+    font-family: inherit;
+  }
+  .modal-close:hover { opacity: 0.8; }
+  .modal-body {
+    padding: 16px;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
   /* Footer */
   .site-footer {
     text-align: center;
@@ -392,6 +441,8 @@
   <h1>Sapling Reports</h1>
   <div class="user-info">
     Bundle View
+    <span style="margin: 0 10px; opacity: 0.5;">|</span>
+    <button onclick="openModal('a11y-modal')" style="background: none; border: none; color: #cde6bb; font-size: 0.75rem; cursor: pointer; font-family: inherit; padding: 0; text-decoration: underline;">Accessibility</button>
     <span style="margin: 0 10px; opacity: 0.5;">|</span>
     <label for="theme-select" style="font-size: 0.75rem;">Theme:</label>
     <select id="theme-select" style="margin-left: 4px; font-size: 0.75rem; padding: 2px 4px; border-radius: 3px; border: 1px solid #ccc;">
@@ -687,7 +738,37 @@
 
 </footer>
 
+<!-- Accessibility Statement Modal -->
+<div id="a11y-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="a11y-modal-title" onclick="if(event.target===this)closeModal('a11y-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="a11y-modal-title">Accessibility Statement</h2>
+      <button class="modal-close" onclick="closeModal('a11y-modal')" aria-label="Close accessibility statement">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="margin-bottom: 10px;">Sapling Reports is committed to ensuring digital accessibility for all users. We are actively working to conform to the <strong>Web Content Accessibility Guidelines (WCAG) 2.1</strong> at <strong>Level A</strong> and <strong>Level AA</strong>.</p>
+      <p style="margin-bottom: 10px;">Our ongoing efforts include semantic HTML, keyboard navigation support, sufficient color contrast, and screen reader compatibility.</p>
+      <p>If you encounter any accessibility barriers, please reach out so we can address them.</p>
+    </div>
+  </div>
+</div>
+
 <script>
+function openModal(id) {
+  var modal = document.getElementById(id);
+  modal.classList.add('active');
+  modal.querySelector('.modal-close').focus();
+  document.addEventListener('keydown', modalKeyHandler);
+}
+function closeModal(id) {
+  var modal = document.getElementById(id);
+  modal.classList.remove('active');
+  document.removeEventListener('keydown', modalKeyHandler);
+}
+function modalKeyHandler(e) {
+  if (e.key === 'Escape') closeModal('a11y-modal');
+}
+
 var badgeColors = {
   green:  { label: '2a5018', color: '3d6b24' },
   blue:   { label: '1e4a8a', color: '2a5db0' },

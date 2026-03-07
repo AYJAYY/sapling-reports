@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLTHS Aspen X2 Bundles</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #333; background: #f4f4f4; }
+
+  /* Focus styles for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid #2a5db0;
+    outline-offset: 2px;
+  }
+
+  /* Header bar */
+  .site-header {
+    background: linear-gradient(to bottom, #5a8a3c, #3d6b24);
+    color: #fff;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .site-header h1 { font-size: 16px; font-weight: bold; letter-spacing: 0.5px; }
+  .site-header .user-info { font-size: 12px; }
+  .site-header .user-info a { color: #cde6bb; text-decoration: none; margin-left: 12px; }
+  .site-header .user-info a:hover { text-decoration: underline; }
+
+  /* Top nav tabs */
+  .top-nav {
+    background: #e8e8e8;
+    border-bottom: 2px solid #3d6b24;
+    display: flex;
+    padding: 0 8px;
+    list-style: none;
+  }
+  .top-nav button {
+    display: inline-block;
+    padding: 6px 16px;
+    margin-right: 2px;
+    background: #5a8a3c;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px 4px 0 0;
+    margin-top: 4px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .top-nav button:hover { background: #4a7a2e; }
+  .top-nav button[aria-selected="true"] { background: #3d6b24; }
+
+  /* Layout */
+  .layout {
+    display: flex;
+    min-height: calc(100vh - 80px);
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 80px;
+    background: #fff;
+    border-right: 1px solid #ccc;
+    padding-top: 8px;
+    flex-shrink: 0;
+    list-style: none;
+  }
+  .sidebar button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 4px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 11px;
+    font-family: inherit;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  .sidebar button:hover { background: #e8f5e0; }
+  .sidebar button.active { background: #d4ecc4; font-weight: bold; }
+  .sidebar .icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 4px;
+    background: #5a8a3c;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  /* Main content */
+  .main-content {
+    flex: 1;
+    padding: 12px;
+  }
+
+  /* Section boxes */
+  section.panel {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  section.panel h2, section.panel h3 {
+    background: linear-gradient(to bottom, #5a8a3c, #4a7a2e);
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .panel-body { padding: 12px; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  table caption {
+    text-align: left;
+    font-weight: bold;
+    padding: 4px 0;
+    font-size: 11px;
+    color: #666;
+    caption-side: top;
+  }
+  /* Visually hidden but accessible to screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  table th {
+    background: #e8e8e8;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+  }
+  table td {
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+  }
+  table tr:nth-child(even) { background: #f9f9f9; }
+  table tr:hover { background: #e8f5e0; }
+
+  /* Links */
+  table a {
+    color: #2a5db0;
+    text-decoration: none;
+  }
+  table a:hover { text-decoration: underline; }
+
+  /* Status badges */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .badge-report { background: #2a5db0; }
+  .badge-export { background: #b07a2a; }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    font-size: 12px;
+    color: #666;
+    padding: 8px 0;
+    margin-bottom: 8px;
+  }
+  .breadcrumb a { color: #2a5db0; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  /* Info box */
+  .info-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .info-card {
+    flex: 1;
+    min-width: 200px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px 14px;
+  }
+  .info-card dt { font-size: 11px; color: #666; text-transform: uppercase; margin-bottom: 4px; }
+  .info-card dd { font-size: 18px; font-weight: bold; color: #3d6b24; margin: 0; }
+
+  /* Disclaimer banner */
+  .disclaimer {
+    background: #fff3cd;
+    border: 2px solid #d4a017;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #664d03;
+  }
+
+  /* Tab panel visibility */
+  .tab-panel[hidden] { display: none; }
+
+  /* Footer */
+  .site-footer {
+    text-align: center;
+    padding: 12px;
+    font-size: 11px;
+    color: #999;
+    border-top: 1px solid #ddd;
+    background: #fff;
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <h1>GLTHS Aspen X2 Bundles</h1>
+  <div class="user-info">
+    Admin User
+    <a href="#">Log Off</a>
+  </div>
+</header>
+
+<!-- Top Navigation -->
+<ul class="top-nav" role="tablist" aria-label="Site sections">
+  <li role="presentation"><button role="tab" aria-selected="true" aria-controls="page-home" id="tab-home" onclick="showPage('home')">Home</button></li>
+  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-reports" id="tab-reports" onclick="showPage('reports')">Reports</button></li>
+  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-exports" id="tab-exports" onclick="showPage('exports')">Exports</button></li>
+  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-bundles" id="tab-bundles" onclick="showPage('bundles')">Bundles</button></li>
+</ul>
+
+<!-- Layout -->
+<div class="layout">
+
+  <!-- Sidebar (visual duplicate of top nav, hidden from screen readers) -->
+  <div class="sidebar" aria-hidden="true">
+    <button id="side-home" class="active" onclick="showPage('home')" tabindex="-1">
+      <span class="icon">H</span>
+      Home
+    </button>
+    <button id="side-reports" onclick="showPage('reports')" tabindex="-1">
+      <span class="icon">R</span>
+      Reports
+    </button>
+    <button id="side-exports" onclick="showPage('exports')" tabindex="-1">
+      <span class="icon">E</span>
+      Exports
+    </button>
+    <button id="side-bundles" onclick="showPage('bundles')" tabindex="-1">
+      <span class="icon">B</span>
+      Bundles
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- ==================== HOME PAGE ==================== -->
+    <div id="page-home" class="tab-panel" role="tabpanel" aria-labelledby="tab-home">
+
+      <p class="breadcrumb">
+        Home
+      </p>
+
+      <div class="disclaimer" role="alert">
+        <strong>Important:</strong> These reports and exports are <strong>highly customized</strong> for Greater Lowell Technical High School&rsquo;s specific Aspen X2 configuration, including custom field mappings, attendance codes, and database schema. They are <strong>not guaranteed to work</strong> on other Aspen installations without modification. Use at your own risk and always test in a non-production environment first.
+      </div>
+
+      <section class="panel">
+        <h2>Welcome</h2>
+        <div class="panel-body">
+          <p style="margin-bottom: 10px; line-height: 1.6;">
+            This site hosts the <strong>custom report and export bundles</strong> developed for
+            <strong>Greater Lowell Technical High School (GLTHS)</strong>, built for the
+            <strong>Follett Aspen X2</strong> Student Information System.
+          </p>
+          <p style="margin-bottom: 10px; line-height: 1.6;">
+            Each bundle is a packaged <code>.zip</code> file that can be imported directly into Aspen via
+            <strong>Admin &rarr; Tools &rarr; Bundles &rarr; Import Bundle</strong>. Reports generate
+            formatted PDF output using JasperReports 6.19.1. Exports generate CSV files for data analysis
+            and spreadsheet use.
+          </p>
+        </div>
+      </section>
+
+      <div class="info-row">
+        <dl class="info-card">
+          <dt>Total Bundles</dt>
+          <dd>3</dd>
+        </dl>
+        <dl class="info-card">
+          <dt>Reports (PDF)</dt>
+          <dd>2</dd>
+        </dl>
+        <dl class="info-card">
+          <dt>Exports (CSV)</dt>
+          <dd>1</dd>
+        </dl>
+      </div>
+
+      <section class="panel">
+        <h2>Pages</h2>
+        <div class="panel-body">
+          <table>
+            <caption class="sr-only">Site pages and their descriptions</caption>
+            <thead>
+              <tr>
+                <th scope="col">Page</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#" onclick="showPage('reports'); return false;">Reports</a></td>
+                <td>Custom PDF reports deployed as Aspen bundles. Each report uses a JasperReports layout (JRXML), a Java data source, and an input definition for user parameters. Currently includes attendance reports with large student photos.</td>
+              </tr>
+              <tr>
+                <td><a href="#" onclick="showPage('exports'); return false;">Exports</a></td>
+                <td>Custom CSV exports deployed as Aspen bundles. Exports use a Java data source that returns tabular data directly &mdash; no JRXML layout needed. Currently includes the Attendance Policy unexcused absence calculator with term filtering and threshold support.</td>
+              </tr>
+              <tr>
+                <td><a href="#" onclick="showPage('bundles'); return false;">Bundles</a></td>
+                <td>Download page for all bundle <code>.zip</code> files. Import these into Aspen via Admin &rarr; Tools &rarr; Bundles &rarr; Import Bundle.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Quick Reference</h2>
+        <div class="panel-body">
+          <table>
+            <caption class="sr-only">All custom reports and exports at a glance</caption>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SYS-ATT-009LP</td>
+                <td><a href="#" onclick="showPage('reports'); return false;">Homeroom Attendance with Large Photos</a></td>
+                <td><span class="badge badge-report">Report</span></td>
+                <td>Attendance</td>
+              </tr>
+              <tr>
+                <td>SYS-ATT-CLASS-LP</td>
+                <td><a href="#" onclick="showPage('reports'); return false;">Class Attendance with Large Photos</a></td>
+                <td><span class="badge badge-report">Report</span></td>
+                <td>Attendance</td>
+              </tr>
+              <tr>
+                <td>CUST-ATT-POLICY-001</td>
+                <td><a href="#" onclick="showPage('exports'); return false;">Attendance Policy Unexcused Absence Export</a></td>
+                <td><span class="badge badge-export">Export</span></td>
+                <td>Attendance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==================== REPORTS PAGE ==================== -->
+    <div id="page-reports" class="tab-panel" role="tabpanel" aria-labelledby="tab-reports" hidden>
+
+      <p class="breadcrumb">
+        <a href="#" onclick="showPage('home'); return false;">Home</a> &rsaquo;
+        Custom Reports
+      </p>
+
+      <div class="info-row">
+        <dl class="info-card">
+          <dt>Reports (PDF)</dt>
+          <dd>2</dd>
+        </dl>
+      </div>
+
+      <section class="panel">
+        <h2>Custom Reports</h2>
+        <div class="panel-body">
+          <table>
+            <caption class="sr-only">Custom PDF reports with details and file links</caption>
+            <thead>
+              <tr>
+                <th scope="col">Report ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Context</th>
+                <th scope="col">Description</th>
+                <th scope="col">Bundle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SYS-ATT-009LP</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/HomeroomAttendancePhoto.zip">Homeroom Attendance with Large Photos</a></td>
+                <td>Attendance</td>
+                <td>Daily Attendance / Staff View</td>
+                <td>Attendance input sheet for substitute teachers. Lists active students by homeroom with large photos, YOG, Local ID, and Mon-Fri attendance columns.</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/HomeroomAttendancePhoto.zip">Download .zip</a></td>
+              </tr>
+              <tr>
+                <td>SYS-ATT-CLASS-LP</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/ClassAttendancePhoto.zip">Class Attendance with Large Photos</a></td>
+                <td>Attendance</td>
+                <td>Period Classes / Staff + School View</td>
+                <td>Attendance input sheet scoped to selected class section. Large photos, per-section gender summary, Mon-Fri columns.</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/ClassAttendancePhoto.zip">Download .zip</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==================== EXPORTS PAGE ==================== -->
+    <div id="page-exports" class="tab-panel" role="tabpanel" aria-labelledby="tab-exports" hidden>
+
+      <p class="breadcrumb">
+        <a href="#" onclick="showPage('home'); return false;">Home</a> &rsaquo;
+        Custom Exports
+      </p>
+
+      <div class="info-row">
+        <dl class="info-card">
+          <dt>Exports (CSV)</dt>
+          <dd>1</dd>
+        </dl>
+      </div>
+
+      <section class="panel">
+        <h2>Custom Exports</h2>
+        <div class="panel-body">
+          <table>
+            <caption class="sr-only">Custom CSV exports with details and file links</caption>
+            <thead>
+              <tr>
+                <th scope="col">Export ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Context</th>
+                <th scope="col">Description</th>
+                <th scope="col">Bundle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CUST-ATT-POLICY-001</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/Attendance%20Policy.zip">Attendance Policy Unexcused Absence Export</a></td>
+                <td>Attendance</td>
+                <td>Student List / School View</td>
+                <td>CSV export calculating unexcused absences per GLTHS attendance policy: full absences (A/AT/AD codes), tardy equivalents (4:1), dismissal equivalents (4:1). Includes grade term selector and threshold filter.</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/Attendance%20Policy.zip">Download .zip</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==================== BUNDLES PAGE ==================== -->
+    <div id="page-bundles" class="tab-panel" role="tabpanel" aria-labelledby="tab-bundles" hidden>
+
+      <p class="breadcrumb">
+        <a href="#" onclick="showPage('home'); return false;">Home</a> &rsaquo;
+        All Bundles
+      </p>
+
+      <div class="info-row">
+        <dl class="info-card">
+          <dt>Total Bundles</dt>
+          <dd>3</dd>
+        </dl>
+        <dl class="info-card">
+          <dt>Reports (PDF)</dt>
+          <dd>2</dd>
+        </dl>
+        <dl class="info-card">
+          <dt>Exports (CSV)</dt>
+          <dd>1</dd>
+        </dl>
+      </div>
+
+      <section class="panel">
+        <h2>All Bundles &mdash; Download</h2>
+        <div class="panel-body">
+          <table>
+            <caption class="sr-only">All available bundle downloads</caption>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Category</th>
+                <th scope="col">Bundle (.zip)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SYS-ATT-009LP</td>
+                <td>Homeroom Attendance with Large Photos</td>
+                <td><span class="badge badge-report">Report</span></td>
+                <td>Attendance</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/HomeroomAttendancePhoto.zip">Download .zip</a></td>
+              </tr>
+              <tr>
+                <td>SYS-ATT-CLASS-LP</td>
+                <td>Class Attendance with Large Photos</td>
+                <td><span class="badge badge-report">Report</span></td>
+                <td>Attendance</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/ClassAttendancePhoto.zip">Download .zip</a></td>
+              </tr>
+              <tr>
+                <td>CUST-ATT-POLICY-001</td>
+                <td>Attendance Policy Unexcused Absence Export</td>
+                <td><span class="badge badge-export">Export</span></td>
+                <td>Attendance</td>
+                <td><a href="https://github.com/AYJAYY/glths-aspen-reports-dist/blob/main/Attendance%20Policy.zip">Download .zip</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  GLTHS Custom Reports Collection &mdash; Greater Lowell Technical High School <br> This site operates entirely independently. It is not owned, operated, maintained, or in any way officially connected to Follett School Solutions. All product names, logos, and brands are the property of their respective owners. The use of such names does not imply any endorsement, certification, or partnership.
+</footer>
+
+<script>
+function showPage(page) {
+  var pages = ['home', 'reports', 'exports', 'bundles'];
+
+  pages.forEach(function(p) {
+    // Toggle tab panels
+    var panel = document.getElementById('page-' + p);
+    if (p === page) {
+      panel.removeAttribute('hidden');
+    } else {
+      panel.setAttribute('hidden', '');
+    }
+
+    // Update top nav tabs
+    var topTab = document.getElementById('tab-' + p);
+    topTab.setAttribute('aria-selected', p === page ? 'true' : 'false');
+
+    // Update sidebar visual state
+    var sideBtn = document.getElementById('side-' + p);
+    if (p === page) {
+      sideBtn.classList.add('active');
+    } else {
+      sideBtn.classList.remove('active');
+    }
+  });
+}
+</script>
+
+</body>
+</html>

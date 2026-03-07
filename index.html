@@ -296,16 +296,25 @@
     flex-wrap: wrap;
   }
   .info-card {
+    flex: 1;
     min-width: 200px;
-    max-width: 250px;
-    background: var(--primary-light);
-    border: 2px solid var(--primary);
-    border-radius: 6px;
-    padding: 14px 18px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow: hidden;
     text-align: center;
   }
-  .info-card dt { font-size: 0.8125rem; color: var(--primary-dark); text-transform: uppercase; font-weight: bold; margin-bottom: 6px; letter-spacing: 0.5px; }
-  .info-card dd { font-size: 1.5rem; font-weight: bold; color: var(--primary); margin: 0; }
+  .info-card dt {
+    background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: bold;
+    padding: 6px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+  .info-card dd { font-size: 1.5rem; font-weight: bold; color: var(--primary-dark); margin: 0; padding: 12px 14px; }
 
   /* Disclaimer banner */
   .disclaimer {

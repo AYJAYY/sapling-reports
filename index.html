@@ -899,15 +899,23 @@
               <p style="margin: 6px 0 0; line-height: 1.6;">Inside the zip you'll find <code>Exports/DEVResources/DEVResources.zip</code>, a ready-to-use Aspen export. Import it into Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong>. Then go to <strong>Tools &rarr; Exports</strong>, find <strong>Schema &amp; Term Reference Export</strong>, and run it. It can export your Data Dictionary schema, grade term maps, and schedule term data as CSV files. Save those CSVs into the <code>BuildResources/</code> folder so Claude Code knows your district's custom fields.</p>
             </li>
             <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
-              <strong style="color: var(--primary-dark);">Step 5: Describe what you need in plain English</strong>
+              <strong style="color: var(--primary-dark);">Step 5: Run the Reference Table Utilization report</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">In Aspen, go to <strong>Admin &rarr; Reports</strong> and run the <strong>Reference Table Utilization</strong> report. Save the output and place it in your <code>~/ClaudeReports</code> working directory. This gives Claude Code visibility into which reference tables and codes your district actually uses.</p>
+            </li>
+            <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
+              <strong style="color: var(--primary-dark);">Step 6: Run the Data Dictionary report</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">In Aspen, go to <strong>Admin &rarr; Reports</strong> and run the <strong>Data Dictionary</strong> report. Save the output and place it in your <code>~/ClaudeReports</code> working directory. This provides Claude Code with a complete map of your district's database fields, aliases, and data types.</p>
+            </li>
+            <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
+              <strong style="color: var(--primary-dark);">Step 7: Describe what you need in plain English</strong>
               <p style="margin: 6px 0 0; line-height: 1.6;">Tell Claude Code what report or export you want. Include details like output format (PDF or CSV), what data to pull, any filters the user should see, how records should be grouped, and which Aspen view and navigation tab it runs from. The more context you give, the better the result.</p>
             </li>
             <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
-              <strong style="color: var(--primary-dark);">Step 6: Upload the generated bundle to Aspen</strong>
+              <strong style="color: var(--primary-dark);">Step 8: Upload the generated bundle to Aspen</strong>
               <p style="margin: 6px 0 0; line-height: 1.6;">Claude Code writes all the Java, JRXML, and XML files and packages them into a <code>.zip</code> bundle. Upload the zip to Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong> and run your new report.</p>
             </li>
             <li style="padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0;">
-              <strong style="color: var(--primary-dark);">Step 7: Iterate when things break</strong>
+              <strong style="color: var(--primary-dark);">Step 9: Iterate when things break</strong>
               <p style="margin: 6px 0 0; line-height: 1.6;">Aspen compiles Java and JRXML server-side, so errors only appear at runtime. Copy the exact error from Aspen's job log and paste it into Claude Code. It will diagnose the issue, fix the code, and rebuild the bundle. Common issues include missing API methods, wrong field names, or criteria that return no data.</p>
             </li>
           </ol>

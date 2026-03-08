@@ -518,11 +518,11 @@
 
 <!-- Top Navigation -->
 <nav aria-label="Site sections">
-<ul class="top-nav" role="tablist">
-  <li role="presentation"><button role="tab" aria-selected="true" aria-controls="page-home" id="tab-home" onclick="showPage('home')">Home</button></li>
-  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-reports" id="tab-reports" onclick="showPage('reports')">Reports</button></li>
-  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-exports" id="tab-exports" onclick="showPage('exports')">Exports</button></li>
-  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-build" id="tab-build" onclick="showPage('build')">AI Toolkits</button></li>
+<ul class="top-nav" role="tablist" aria-label="Primary sections">
+  <li role="presentation"><button role="tab" aria-selected="true" aria-controls="page-home" id="tab-home" tabindex="0" onclick="showPage('home')">Home</button></li>
+  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-reports" id="tab-reports" tabindex="-1" onclick="showPage('reports')">Reports</button></li>
+  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-exports" id="tab-exports" tabindex="-1" onclick="showPage('exports')">Exports</button></li>
+  <li role="presentation"><button role="tab" aria-selected="false" aria-controls="page-build" id="tab-build" tabindex="-1" onclick="showPage('build')">AI Toolkits</button></li>
 </ul>
 </nav>
 
@@ -1028,6 +1028,65 @@
 
 <script>
 var modalTrigger = null;
+var inertBackgroundNodes = [];
+var pageNames = ['home', 'reports', 'exports', 'build'];
+var validThemes = ['green', 'blue', 'orange', 'red', 'purple'];
+
+function sanitizeTheme(theme) {
+  return validThemes.indexOf(theme) !== -1 ? theme : 'green';
+}
+
+function setBackgroundInert(activeModal) {
+  clearBackgroundInert();
+  Array.prototype.forEach.call(document.body.children, function(node) {
+    if (node === activeModal) return;
+    inertBackgroundNodes.push({
+      node: node,
+      hadInert: node.hasAttribute('inert'),
+      ariaHidden: node.getAttribute('aria-hidden')
+    });
+    node.setAttribute('inert', '');
+    node.setAttribute('aria-hidden', 'true');
+  });
+}
+
+function clearBackgroundInert() {
+  inertBackgroundNodes.forEach(function(record) {
+    if (!record.hadInert) record.node.removeAttribute('inert');
+    if (record.ariaHidden === null) {
+      record.node.removeAttribute('aria-hidden');
+    } else {
+      record.node.setAttribute('aria-hidden', record.ariaHidden);
+    }
+  });
+  inertBackgroundNodes = [];
+}
+
+function handleTabKeydown(e) {
+  var keys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+  if (keys.indexOf(e.key) === -1) return;
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.top-nav [role="tab"]'));
+  var currentIndex = tabs.indexOf(e.currentTarget);
+  if (currentIndex === -1 || tabs.length === 0) return;
+  e.preventDefault();
+  var targetIndex = currentIndex;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') targetIndex = (currentIndex + 1) % tabs.length;
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') targetIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+  if (e.key === 'Home') targetIndex = 0;
+  if (e.key === 'End') targetIndex = tabs.length - 1;
+  var targetTab = tabs[targetIndex];
+  if (!targetTab) return;
+  targetTab.focus();
+  showPage(targetTab.id.replace('tab-', ''));
+}
+
+function setupTabKeyboardNavigation() {
+  var tabs = document.querySelectorAll('.top-nav [role="tab"]');
+  Array.prototype.forEach.call(tabs, function(tab) {
+    tab.addEventListener('keydown', handleTabKeydown);
+  });
+}
+
 document.getElementById('a11y-modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal('a11y-modal');
 });
@@ -1041,13 +1100,18 @@ document.getElementById('about-modal').addEventListener('click', function(e) {
 function openModal(id) {
   modalTrigger = document.activeElement;
   var modal = document.getElementById(id);
+  if (!modal) return;
   modal.classList.add('active');
+  setBackgroundInert(modal);
   modal.querySelector('.modal-close').focus();
+  document.removeEventListener('keydown', modalKeyHandler);
   document.addEventListener('keydown', modalKeyHandler);
 }
 function closeModal(id) {
   var modal = document.getElementById(id);
+  if (!modal) return;
   modal.classList.remove('active');
+  clearBackgroundInert();
   document.removeEventListener('keydown', modalKeyHandler);
   if (modalTrigger) modalTrigger.focus();
 }
@@ -1077,41 +1141,32 @@ var badgeColors = {
 };
 
 function setTheme(theme) {
-  document.body.className = 'theme-' + theme;
-  localStorage.setItem('sapling-theme', theme);
-  var logoSrc = theme === 'green' ? 'logos/logo.webp' : 'logos/logo-' + theme + '.webp';
+  var safeTheme = sanitizeTheme(theme);
+  document.body.className = 'theme-' + safeTheme;
+  localStorage.setItem('sapling-theme', safeTheme);
+  var logoSrc = safeTheme === 'green' ? 'logos/logo.webp' : 'logos/logo-' + safeTheme + '.webp';
   var logo = document.getElementById('footer-logo');
   if (logo) logo.src = logoSrc;
   var aboutLogo = document.getElementById('about-logo');
   if (aboutLogo) aboutLogo.src = logoSrc;
+  var sel = document.getElementById('theme-select');
+  if (sel) sel.value = safeTheme;
   var badge = document.getElementById('visitor-badge');
-  var bc = badgeColors[theme] || badgeColors.green;
+  var bc = badgeColors[safeTheme] || badgeColors.green;
   if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color + '&hit=true';
 }
 
 (function() {
   var saved = localStorage.getItem('sapling-theme');
-  if (saved) {
-    document.body.className = 'theme-' + saved;
-    var sel = document.getElementById('theme-select');
-    if (sel) sel.value = saved;
-    var savedLogoSrc = saved === 'green' ? 'logos/logo.webp' : 'logos/logo-' + saved + '.webp';
-    var logo = document.getElementById('footer-logo');
-    if (logo) logo.src = savedLogoSrc;
-    var aboutLogo = document.getElementById('about-logo');
-    if (aboutLogo) aboutLogo.src = savedLogoSrc;
-    var badge = document.getElementById('visitor-badge');
-    var bc = badgeColors[saved] || badgeColors.green;
-    if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color + '&hit=true';
-  }
+  if (saved) setTheme(saved);
 })();
 
 function showPage(page) {
+  if (pageNames.indexOf(page) === -1) return;
   if (window.location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
   localStorage.setItem('sapling-page', page);
-  var pages = ['home', 'reports', 'exports', 'build'];
 
-  pages.forEach(function(p) {
+  pageNames.forEach(function(p) {
     // Toggle tab panels
     var panel = document.getElementById('page-' + p);
     if (p === page) {
@@ -1123,6 +1178,7 @@ function showPage(page) {
     // Update top nav tabs
     var topTab = document.getElementById('tab-' + p);
     topTab.setAttribute('aria-selected', p === page ? 'true' : 'false');
+    topTab.setAttribute('tabindex', p === page ? '0' : '-1');
 
     // Update sidebar visual state
     var sideBtn = document.getElementById('side-' + p);
@@ -1136,10 +1192,12 @@ function showPage(page) {
 
 (function() {
   var savedPage = localStorage.getItem('sapling-page');
-  if (savedPage && ['home', 'reports', 'exports', 'build'].indexOf(savedPage) !== -1) {
+  if (savedPage && pageNames.indexOf(savedPage) !== -1) {
     showPage(savedPage);
   }
 })();
+
+setupTabKeyboardNavigation();
 </script>
 
 </body>

@@ -376,25 +376,29 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       margin-bottom: 10px;
-      padding: 10px;
+      padding: 0;
+      overflow: hidden;
+      text-align: center;
     }
-    .table-cards tr:hover { background: var(--primary-light); }
+    .table-cards tr:hover { background: #fff; }
     .table-cards td {
       display: block;
       border: none;
-      padding: 3px 0;
+      padding: 4px 12px;
       white-space: normal !important;
     }
-    .table-cards td::before {
-      content: attr(data-label);
+    .table-cards td::before { display: none; }
+    .table-cards td:first-child {
+      background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+      color: #fff;
       font-weight: bold;
-      font-size: 0.65rem;
-      color: #666;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 2px;
+      font-size: 0.75rem;
+      padding: 8px 12px;
     }
-    .table-cards td:last-child { margin-top: 6px; }
+    .table-cards td:nth-child(2) { font-weight: bold; padding-top: 10px; }
+    .table-cards td:last-child { padding: 6px 12px 12px; }
+    .table-cards td.hide-mobile-col { display: none; }
+    .table-cards td.show-mobile-card { display: block; font-size: 0.75rem; color: #555; }
   }
 
   @media (max-width: 480px) {
@@ -627,7 +631,9 @@
             <div style="background: linear-gradient(to bottom, var(--primary), var(--primary-dark)); color: #fff; padding: 8px 12px; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 0.75rem;">SR-SYS-SCHEMA</div>
             <div style="padding: 12px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 4px 4px;">
               <p style="font-weight: bold; margin-bottom: 4px;">Schema &amp; Term Reference Export</p>
-              <p style="font-size: 0.75rem; color: #666; margin-bottom: 10px;">Version 1.0.0</p>
+              <p style="font-size: 0.75rem; color: #666; margin-bottom: 4px;"><span class="badge badge-export">Export</span></p>
+              <p style="font-size: 0.75rem; color: #666; margin-bottom: 4px;">Version 1.0.0</p>
+              <p style="font-size: 0.75rem; color: #555; margin-bottom: 10px;">Exports Data Dictionary schema fields, grade term maps, or schedule term data as CSV for developer reference.</p>
               <a href="#" onclick="showPage('exports'); return false;" class="btn-download">View Export</a>
             </div>
           </div>
@@ -707,17 +713,17 @@
               <tr>
                 <td style="white-space: nowrap;" data-label="Report ID">SR-ATT-CLASS</td>
                 <td data-label="Name"><strong>Class Attendance with Large Photos</strong></td>
-                <td class="hide-mobile" data-label="Version">1.0.0</td>
-                <td class="hide-mobile" data-label="Context">Period Classes / Staff + School View</td>
-                <td class="hide-mobile" data-label="Description">Attendance input sheet scoped to selected class section. Large photos, per-section gender summary, Mon-Fri columns.</td>
+                <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
+                <td class="hide-mobile hide-mobile-col" data-label="Context">Period Classes / Staff + School View</td>
+                <td class="hide-mobile show-mobile-card" data-label="Description">Attendance input sheet scoped to selected class section. Large photos, per-section gender summary, Mon-Fri columns.</td>
                 <td data-label=""><a href="https://github.com/AYJAYY/sapling-reports/raw/main/bundles/ClassAttendancePhoto.zip" class="btn-download">Download SR-ATT-CLASS</a></td>
               </tr>
               <tr>
                 <td style="white-space: nowrap;" data-label="Report ID">SR-ATT-HOMEROOM</td>
                 <td data-label="Name"><strong>Homeroom Attendance with Large Photos</strong></td>
-                <td class="hide-mobile" data-label="Version">1.0.0</td>
-                <td class="hide-mobile" data-label="Context">Daily Attendance / Staff View</td>
-                <td class="hide-mobile" data-label="Description">Attendance input sheet for substitute teachers. Lists active students by homeroom with large photos, YOG, Local ID, and Mon-Fri attendance columns.</td>
+                <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
+                <td class="hide-mobile hide-mobile-col" data-label="Context">Daily Attendance / Staff View</td>
+                <td class="hide-mobile show-mobile-card" data-label="Description">Attendance input sheet for substitute teachers. Lists active students by homeroom with large photos, YOG, Local ID, and Mon-Fri attendance columns.</td>
                 <td data-label=""><a href="https://github.com/AYJAYY/sapling-reports/raw/main/bundles/HomeroomAttendancePhoto.zip" class="btn-download">Download SR-ATT-HOMEROOM</a></td>
               </tr>
             </tbody>
@@ -760,17 +766,17 @@
               <tr>
                 <td style="white-space: nowrap;" data-label="Export ID">SR-ATT-POLICY</td>
                 <td data-label="Name"><strong>GLTHS Attendance Policy Unexcused Absence Export</strong></td>
-                <td class="hide-mobile" data-label="Version">1.0.0</td>
-                <td class="hide-mobile" data-label="Context">Student List / School View</td>
-                <td class="hide-mobile" data-label="Description">CSV export calculating unexcused absences per attendance policy: full absences (A/AT/AD codes), tardy equivalents (4:1), dismissal equivalents (4:1). Includes grade term selector and threshold filter.</td>
+                <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
+                <td class="hide-mobile hide-mobile-col" data-label="Context">Student List / School View</td>
+                <td class="hide-mobile show-mobile-card" data-label="Description">CSV export calculating unexcused absences per attendance policy: full absences (A/AT/AD codes), tardy equivalents (4:1), dismissal equivalents (4:1). Includes grade term selector and threshold filter.</td>
                 <td data-label=""><a href="https://github.com/AYJAYY/sapling-reports/raw/main/bundles/Attendance%20Policy.zip" class="btn-download">Download SR-ATT-POLICY</a></td>
               </tr>
               <tr>
                 <td style="white-space: nowrap;" data-label="Export ID">SR-SYS-SCHEMA</td>
                 <td data-label="Name"><strong>Schema &amp; Term Reference Export</strong></td>
-                <td class="hide-mobile" data-label="Version">1.0.0</td>
-                <td class="hide-mobile" data-label="Context">System</td>
-                <td class="hide-mobile" data-label="Description">Exports Data Dictionary schema fields, grade term maps, or schedule term data as CSV for developer reference.</td>
+                <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
+                <td class="hide-mobile hide-mobile-col" data-label="Context">System</td>
+                <td class="hide-mobile show-mobile-card" data-label="Description">Exports Data Dictionary schema fields, grade term maps, or schedule term data as CSV for developer reference.</td>
                 <td data-label=""><a href="https://github.com/AYJAYY/sapling-reports/raw/main/bundles/DEVResources.zip" class="btn-download">Download SR-SYS-SCHEMA</a></td>
               </tr>
             </tbody>

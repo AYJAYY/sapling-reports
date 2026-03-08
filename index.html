@@ -781,7 +781,7 @@
             <tbody>
               <tr>
                 <td><strong>STARTHERE.md</strong></td>
-                <td>Start here. A step-by-step guide covering setup, usage, troubleshooting, and best practices for using the toolkit.</td>
+                <td>Start here. A step-by-step guide covering setup, usage, troubleshooting, and best practices for using the toolkit. Available in both HTML and Markdown formats.</td>
               </tr>
               <tr>
                 <td><strong>Development Guide</strong></td>
@@ -844,7 +844,7 @@
         <h2>Prerequisites</h2>
         <div class="panel-body">
           <table>
-            <caption class="sr-only">Required software and accounts</caption>
+            <caption class="sr-only">Prerequisites for using the toolkit</caption>
             <thead>
               <tr>
                 <th scope="col">Requirement</th>
@@ -853,16 +853,16 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>Node.js 18+</strong></td>
-                <td>Runtime for Claude Code. Install via <code>apt</code> or <a href="https://github.com/nvm-sh/nvm" style="color: #2a5db0;">nvm</a>.</td>
-              </tr>
-              <tr>
-                <td><strong>Git</strong></td>
-                <td>Version control for managing your reports repository.</td>
-              </tr>
-              <tr>
                 <td><strong>Anthropic Account</strong></td>
-                <td>Claude Pro subscription ($20/mo) or an API key with credits at <a href="https://console.anthropic.com" style="color: #2a5db0;">console.anthropic.com</a>.</td>
+                <td>You need a Claude Pro subscription ($20/mo) or an API key with credits at <a href="https://console.anthropic.com" style="color: #2a5db0;">console.anthropic.com</a> to use Claude Code.</td>
+              </tr>
+              <tr>
+                <td><strong>DEVResources Export</strong></td>
+                <td>Import the included <code>DEVResources.zip</code> bundle into your Aspen system via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong>. Run the export from <strong>Tools &rarr; Exports</strong> to generate your district's Data Dictionary schema, grade term maps, and schedule term data as CSV files. Place the CSVs in the <code>BuildResources/</code> folder so Claude Code knows your custom fields.</td>
+              </tr>
+              <tr>
+                <td><strong>Example Report Bundles</strong></td>
+                <td>Export 3 to 5 existing report or export bundles from your Aspen system via <strong>Admin &rarr; Tools &rarr; Exports/Reports</strong>. Extract each one into the <code>Report Examples/</code> folder. These give Claude Code real working examples of how your district's reports are structured, including Java sources, JRXML layouts, and input definitions.</td>
               </tr>
             </tbody>
           </table>

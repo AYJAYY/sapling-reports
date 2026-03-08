@@ -363,6 +363,7 @@
     .panel-body { padding: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     table { white-space: normal; }
     .hide-mobile { display: none; }
+    .show-mobile { display: block !important; }
     .info-row { gap: 8px; flex-wrap: wrap; }
     .info-card { min-width: 0; width: calc(50% - 4px); flex: none; padding: 0; }
     .info-card dt { font-size: 0.7rem; padding: 4px 8px; white-space: nowrap; }
@@ -605,7 +606,7 @@
       <section class="panel">
         <h2>Latest Release/Update</h2>
         <div class="panel-body">
-          <table>
+          <table class="hide-mobile">
             <caption class="sr-only">Most recently released bundle</caption>
             <thead>
               <tr>
@@ -622,6 +623,14 @@
               </tr>
             </tbody>
           </table>
+          <div class="show-mobile" style="display: none; text-align: center;">
+            <div style="background: linear-gradient(to bottom, var(--primary), var(--primary-dark)); color: #fff; padding: 8px 12px; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 0.75rem;">SR-SYS-SCHEMA</div>
+            <div style="padding: 12px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 4px 4px;">
+              <p style="font-weight: bold; margin-bottom: 4px;">Schema &amp; Term Reference Export</p>
+              <p style="font-size: 0.75rem; color: #666; margin-bottom: 10px;">Version 1.0.0</p>
+              <a href="#" onclick="showPage('exports'); return false;" class="btn-download">View Export</a>
+            </div>
+          </div>
         </div>
       </section>
 

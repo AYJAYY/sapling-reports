@@ -795,34 +795,34 @@
       <section class="panel">
         <h2>How It Works</h2>
         <div class="panel-body">
-          <ol style="margin: 0; padding-left: 20px; line-height: 1.8; font-size: 0.8125rem;">
-            <li style="margin-bottom: 12px;">
-              <strong>Download and extract ClaudeReports.zip</strong><br>
-              Download the zip using the button above and extract it to a folder on your machine. This becomes your working directory. (Optional) Initialize a git repo inside it with <code>git init</code> so Claude Code can track changes and commit your work.
+          <ol style="margin: 0; padding: 0; list-style: none; font-size: 0.8125rem; counter-reset: steps;">
+            <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
+              <strong style="color: var(--primary-dark);">Step 1: Download and extract ClaudeReports.zip</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">Download the zip using the button above. Extract it to a folder on your machine using <code>unzip ClaudeReports.zip -d ~/ClaudeReports</code> or your file manager's extract option. This folder becomes your working directory. (Optional) Initialize a git repo inside it with <code>cd ~/ClaudeReports &amp;&amp; git init</code> so Claude Code can track changes and commit your work.</p>
             </li>
-            <li style="margin-bottom: 12px;">
-              <strong>Install and launch Claude Code</strong><br>
-              Install Claude Code globally by running <code>npm install -g @anthropic-ai/claude-code</code>. Open a terminal in your extracted folder and run <code>claude</code> to start a session. Claude Code will automatically read the included <code>CLAUDE.md</code> files and understand the entire Aspen report architecture.
+            <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
+              <strong style="color: var(--primary-dark);">Step 2: Install and launch Claude Code</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">Make sure Node.js 18+ is installed (check with <code>node --version</code>, or install it with <code>sudo apt install nodejs npm</code>). Then install Claude Code globally: <code>npm install -g @anthropic-ai/claude-code</code>. Navigate to your extracted folder with <code>cd ~/ClaudeReports</code> and run <code>claude</code> to start a session. It will automatically read the included <code>CLAUDE.md</code> files and understand the entire Aspen report architecture.</p>
             </li>
-            <li style="margin-bottom: 12px;">
-              <strong>Export example report bundles from your system</strong><br>
-              In Aspen, go to <strong>Admin &rarr; Tools &rarr; Exports/Reports</strong>, select 3 to 5 existing report bundles, and export them. Extract the contents into the <code>Report Examples/</code> folder in your working directory. These give Claude Code real examples of how your district's reports are structured.
+            <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
+              <strong style="color: var(--primary-dark);">Step 3: Export example report bundles from your system</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">In Aspen, go to <strong>Admin &rarr; Tools &rarr; Exports/Reports</strong>, select 3 to 5 existing report bundles, and export them as zip files. Unzip each one into the <code>Report Examples/</code> folder inside your working directory (e.g., <code>unzip MyReport.zip -d ~/ClaudeReports/Report\ Examples/MyReport</code>). These give Claude Code real examples of how your district's reports are structured.</p>
             </li>
-            <li style="margin-bottom: 12px;">
-              <strong>Export your district's database schema</strong><br>
-              The zip includes a ready-to-use Aspen export called <strong>DEVResources</strong> (<code>Exports/DEVResources/DEVResources.zip</code>). Import it into Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong>, then run it from <strong>Tools &rarr; Exports</strong>. It can export your Data Dictionary schema, grade term maps, and schedule term data as CSV files. Add those CSVs to <code>BuildResources/</code> so Claude Code knows your district's custom fields.
+            <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
+              <strong style="color: var(--primary-dark);">Step 4: Export your district's database schema</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">Inside the zip you'll find <code>Exports/DEVResources/DEVResources.zip</code>, a ready-to-use Aspen export. Import it into Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong>. Then go to <strong>Tools &rarr; Exports</strong>, find <strong>Schema &amp; Term Reference Export</strong>, and run it. It can export your Data Dictionary schema, grade term maps, and schedule term data as CSV files. Save those CSVs into the <code>BuildResources/</code> folder so Claude Code knows your district's custom fields.</p>
             </li>
-            <li style="margin-bottom: 12px;">
-              <strong>Describe what you need in plain English</strong><br>
-              Tell Claude Code what report or export you want. Include details like output format (PDF or CSV), what data to pull, any filters the user should see, how records should be grouped, and which Aspen view and navigation tab it runs from. The more context you give, the better the result.
+            <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
+              <strong style="color: var(--primary-dark);">Step 5: Describe what you need in plain English</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">Tell Claude Code what report or export you want. Include details like output format (PDF or CSV), what data to pull, any filters the user should see, how records should be grouped, and which Aspen view and navigation tab it runs from. The more context you give, the better the result.</p>
             </li>
-            <li style="margin-bottom: 12px;">
-              <strong>Upload the generated bundle to Aspen</strong><br>
-              Claude Code writes all the Java, JRXML, and XML files and packages them into a <code>.zip</code> bundle. Upload the zip to Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong> and run your new report.
+            <li style="margin-bottom: 14px; padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0; counter-increment: steps;">
+              <strong style="color: var(--primary-dark);">Step 6: Upload the generated bundle to Aspen</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">Claude Code writes all the Java, JRXML, and XML files and packages them into a <code>.zip</code> bundle. Upload the zip to Aspen via <strong>Admin &rarr; Tools &rarr; Exports/Reports &rarr; Import Bundle</strong> and run your new report.</p>
             </li>
-            <li>
-              <strong>Iterate when things break</strong><br>
-              Aspen compiles Java and JRXML server-side, so errors only appear at runtime. Copy the exact error from Aspen's job log and paste it into Claude Code. It will diagnose the issue, fix the code, and rebuild the bundle. Common issues include missing API methods, wrong field names, or criteria that return no data.
+            <li style="padding: 12px 14px; background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 4px 4px 0;">
+              <strong style="color: var(--primary-dark);">Step 7: Iterate when things break</strong>
+              <p style="margin: 6px 0 0; line-height: 1.6;">Aspen compiles Java and JRXML server-side, so errors only appear at runtime. Copy the exact error from Aspen's job log and paste it into Claude Code. It will diagnose the issue, fix the code, and rebuild the bundle. Common issues include missing API methods, wrong field names, or criteria that return no data.</p>
             </li>
           </ol>
         </div>

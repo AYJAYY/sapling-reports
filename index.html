@@ -241,6 +241,9 @@
   }
   table a:hover { text-decoration: underline; }
 
+  /* Card icon - hidden on desktop, shown on mobile via table-cards */
+  .card-icon { display: none; }
+
   /* Status badges */
   .badge {
     display: inline-block;
@@ -720,6 +723,7 @@
               <tr>
                 <th scope="col">Report ID</th>
                 <th scope="col">Name</th>
+                <th scope="col" class="hide-mobile">Type</th>
                 <th scope="col" class="hide-mobile">Version</th>
                 <th scope="col" class="hide-mobile">Context</th>
                 <th scope="col" class="hide-mobile">Description</th>
@@ -775,6 +779,7 @@
               <tr>
                 <th scope="col">Export ID</th>
                 <th scope="col">Name</th>
+                <th scope="col" class="hide-mobile">Type</th>
                 <th scope="col" class="hide-mobile">Version</th>
                 <th scope="col" class="hide-mobile">Context</th>
                 <th scope="col" class="hide-mobile">Description</th>

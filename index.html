@@ -375,10 +375,10 @@
       background: #fff;
       border: 1px solid #ccc;
       border-radius: 4px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       padding: 0;
       overflow: hidden;
-      text-align: center;
+      text-align: left;
     }
     .table-cards tr:hover { background: #fff; }
     .table-cards td {
@@ -396,9 +396,19 @@
       padding: 8px 12px;
     }
     .table-cards td:nth-child(2) { font-weight: bold; padding-top: 10px; }
-    .table-cards td:last-child { padding: 6px 12px 12px; }
-    .table-cards td.hide-mobile-col { display: none; }
-    .table-cards td.show-mobile-card { display: block; font-size: 0.75rem; color: #555; }
+    .table-cards td:last-child { padding: 8px 12px 12px; }
+    .table-cards td.hide-mobile-col {
+      display: block;
+      font-size: 0.75rem;
+      color: #555;
+    }
+    .table-cards td.hide-mobile-col::before {
+      display: inline;
+      content: attr(data-label) ": ";
+      font-weight: bold;
+      color: #333;
+    }
+    .table-cards td.show-mobile-card { display: block; font-size: 0.75rem; color: #555; padding-top: 6px; }
   }
 
   @media (max-width: 480px) {
@@ -713,6 +723,7 @@
               <tr>
                 <td style="white-space: nowrap;" data-label="Report ID">SR-ATT-CLASS</td>
                 <td data-label="Name"><strong>Class Attendance with Large Photos</strong></td>
+                <td class="hide-mobile hide-mobile-col" data-label="Type"><span class="badge badge-report">Report</span></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
                 <td class="hide-mobile hide-mobile-col" data-label="Context">Period Classes / Staff + School View</td>
                 <td class="hide-mobile show-mobile-card" data-label="Description">Attendance input sheet scoped to selected class section. Large photos, per-section gender summary, Mon-Fri columns.</td>
@@ -721,6 +732,7 @@
               <tr>
                 <td style="white-space: nowrap;" data-label="Report ID">SR-ATT-HOMEROOM</td>
                 <td data-label="Name"><strong>Homeroom Attendance with Large Photos</strong></td>
+                <td class="hide-mobile hide-mobile-col" data-label="Type"><span class="badge badge-report">Report</span></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
                 <td class="hide-mobile hide-mobile-col" data-label="Context">Daily Attendance / Staff View</td>
                 <td class="hide-mobile show-mobile-card" data-label="Description">Attendance input sheet for substitute teachers. Lists active students by homeroom with large photos, YOG, Local ID, and Mon-Fri attendance columns.</td>
@@ -766,6 +778,7 @@
               <tr>
                 <td style="white-space: nowrap;" data-label="Export ID">SR-ATT-POLICY</td>
                 <td data-label="Name"><strong>GLTHS Attendance Policy Unexcused Absence Export</strong></td>
+                <td class="hide-mobile hide-mobile-col" data-label="Type"><span class="badge badge-export">Export</span></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
                 <td class="hide-mobile hide-mobile-col" data-label="Context">Student List / School View</td>
                 <td class="hide-mobile show-mobile-card" data-label="Description">CSV export calculating unexcused absences per attendance policy: full absences (A/AT/AD codes), tardy equivalents (4:1), dismissal equivalents (4:1). Includes grade term selector and threshold filter.</td>
@@ -774,6 +787,7 @@
               <tr>
                 <td style="white-space: nowrap;" data-label="Export ID">SR-SYS-SCHEMA</td>
                 <td data-label="Name"><strong>Schema &amp; Term Reference Export</strong></td>
+                <td class="hide-mobile hide-mobile-col" data-label="Type"><span class="badge badge-export">Export</span></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
                 <td class="hide-mobile hide-mobile-col" data-label="Context">System</td>
                 <td class="hide-mobile show-mobile-card" data-label="Description">Exports Data Dictionary schema fields, grade term maps, or schedule term data as CSV for developer reference.</td>

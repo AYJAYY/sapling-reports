@@ -366,6 +366,7 @@
     .show-mobile { display: block !important; }
     .info-row { gap: 8px; flex-wrap: wrap; }
     .info-card { min-width: 0; width: calc(50% - 4px); flex: none; padding: 0; }
+    .info-row-single .info-card { width: 100%; }
     .info-card dt { font-size: 0.7rem; padding: 4px 8px; white-space: nowrap; }
 
     /* Card layout for reports/exports tables on mobile */
@@ -394,6 +395,12 @@
       font-weight: bold;
       font-size: 0.75rem;
       padding: 8px 12px;
+      text-align: center;
+    }
+    .table-cards td:first-child .card-icon {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 4px;
     }
     .table-cards td:nth-child(2) { font-weight: bold; padding-top: 10px; }
     .table-cards td:last-child { padding: 8px 12px 12px; }
@@ -697,7 +704,7 @@
         <a href="#" onclick="showPage('home'); return false;" class="crumb">Home</a> <span class="crumb-sep">&rsaquo;</span> <span class="crumb">Reports</span>
       </p>
 
-      <div class="info-row">
+      <div class="info-row info-row-single">
         <dl class="info-card">
           <dt>Reports</dt>
           <dd>2</dd>
@@ -721,7 +728,7 @@
             </thead>
             <tbody>
               <tr>
-                <td style="white-space: nowrap;" data-label="Report ID">SR-ATT-CLASS</td>
+                <td style="white-space: nowrap;" data-label="Report ID"><span class="card-icon" aria-hidden="true">&#128196;</span>SR-ATT-CLASS</td>
                 <td data-label="Name"><strong>Class Attendance with Large Photos</strong></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Type"><span class="badge badge-report">Report</span></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
@@ -730,7 +737,7 @@
                 <td data-label=""><a href="https://github.com/AYJAYY/sapling-reports/raw/main/bundles/ClassAttendancePhoto.zip" class="btn-download">Download SR-ATT-CLASS</a></td>
               </tr>
               <tr>
-                <td style="white-space: nowrap;" data-label="Report ID">SR-ATT-HOMEROOM</td>
+                <td style="white-space: nowrap;" data-label="Report ID"><span class="card-icon" aria-hidden="true">&#128196;</span>SR-ATT-HOMEROOM</td>
                 <td data-label="Name"><strong>Homeroom Attendance with Large Photos</strong></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Type"><span class="badge badge-report">Report</span></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
@@ -752,7 +759,7 @@
         <a href="#" onclick="showPage('home'); return false;" class="crumb">Home</a> <span class="crumb-sep">&rsaquo;</span> <span class="crumb">Exports</span>
       </p>
 
-      <div class="info-row">
+      <div class="info-row info-row-single">
         <dl class="info-card">
           <dt>Exports</dt>
           <dd>2</dd>
@@ -776,7 +783,7 @@
             </thead>
             <tbody>
               <tr>
-                <td style="white-space: nowrap;" data-label="Export ID">SR-ATT-POLICY</td>
+                <td style="white-space: nowrap;" data-label="Export ID"><span class="card-icon" aria-hidden="true">&#128202;</span>SR-ATT-POLICY</td>
                 <td data-label="Name"><strong>GLTHS Attendance Policy Unexcused Absence Export</strong></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Type"><span class="badge badge-export">Export</span></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>
@@ -785,7 +792,7 @@
                 <td data-label=""><a href="https://github.com/AYJAYY/sapling-reports/raw/main/bundles/Attendance%20Policy.zip" class="btn-download">Download SR-ATT-POLICY</a></td>
               </tr>
               <tr>
-                <td style="white-space: nowrap;" data-label="Export ID">SR-SYS-SCHEMA</td>
+                <td style="white-space: nowrap;" data-label="Export ID"><span class="card-icon" aria-hidden="true">&#128202;</span>SR-SYS-SCHEMA</td>
                 <td data-label="Name"><strong>Schema &amp; Term Reference Export</strong></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Type"><span class="badge badge-export">Export</span></td>
                 <td class="hide-mobile hide-mobile-col" data-label="Version">1.0.0</td>

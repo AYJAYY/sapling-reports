@@ -1031,6 +1031,7 @@ function setTheme(theme) {
 })();
 
 function showPage(page) {
+  if (window.location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
   var pages = ['home', 'reports', 'exports', 'build'];
 
   pages.forEach(function(p) {

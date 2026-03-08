@@ -610,7 +610,6 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Type</th>
                 <th scope="col">Version</th>
               </tr>
             </thead>
@@ -618,7 +617,6 @@
               <tr>
                 <td style="white-space: nowrap;">SR-SYS-SCHEMA</td>
                 <td><a href="#" onclick="showPage('exports'); return false;" class="btn-download">Schema &amp; Term Reference Export</a></td>
-                <td><span class="badge badge-export">Export</span></td>
                 <td>1.0.0</td>
               </tr>
             </tbody>
@@ -1060,6 +1058,7 @@ function setTheme(theme) {
 
 function showPage(page) {
   if (window.location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
+  localStorage.setItem('sapling-page', page);
   var pages = ['home', 'reports', 'exports', 'build'];
 
   pages.forEach(function(p) {
@@ -1084,6 +1083,13 @@ function showPage(page) {
     }
   });
 }
+
+(function() {
+  var savedPage = localStorage.getItem('sapling-page');
+  if (savedPage && ['home', 'reports', 'exports', 'build'].indexOf(savedPage) !== -1) {
+    showPage(savedPage);
+  }
+})();
 </script>
 
 </body>

@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="Sapling Reports">
 <meta name="twitter:description" content="Custom report and export bundles for Follett Aspen.">
 <meta name="twitter:image" content="https://saplingreports.com/logos/logo.png">
-<title>Sapling Reports</title>
+<title>Sapling Reports — Custom Aspen Report &amp; Export Bundles</title>
 <link rel="icon" type="image/png" href="logos/logo.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNR1352YFP"></script>
 <script>
@@ -1038,6 +1038,12 @@
 var modalTrigger = null;
 var inertBackgroundNodes = [];
 var pageNames = ['home', 'reports', 'exports', 'build'];
+var pageTitles = {
+  home: 'Sapling Reports — Custom Aspen Report & Export Bundles',
+  reports: 'Reports — Sapling Reports',
+  exports: 'Exports — Sapling Reports',
+  build: 'AI Toolkits — Sapling Reports'
+};
 var validThemes = ['green', 'blue', 'orange', 'red', 'purple'];
 
 function sanitizeTheme(theme) {
@@ -1173,6 +1179,7 @@ function showPage(page) {
   if (pageNames.indexOf(page) === -1) return;
   if (window.location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
   localStorage.setItem('sapling-page', page);
+  document.title = pageTitles[page] || pageTitles.home;
 
   pageNames.forEach(function(p) {
     // Toggle tab panels

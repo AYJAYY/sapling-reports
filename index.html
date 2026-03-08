@@ -363,8 +363,9 @@
     .panel-body { padding: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     table { white-space: normal; }
     .hide-mobile { display: none; }
-    .info-row { gap: 8px; }
-    .info-card { min-width: 120px; padding: 8px 10px; }
+    .info-row { gap: 8px; flex-wrap: wrap; }
+    .info-card { min-width: 0; width: calc(50% - 4px); flex: none; padding: 0; }
+    .info-card dt { font-size: 0.7rem; padding: 4px 8px; white-space: nowrap; }
 
     /* Card layout for reports/exports tables on mobile */
     .table-cards thead { display: none; }

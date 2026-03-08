@@ -1003,8 +1003,11 @@ var badgeColors = {
 function setTheme(theme) {
   document.body.className = 'theme-' + theme;
   localStorage.setItem('sapling-theme', theme);
+  var logoSrc = theme === 'green' ? 'logos/logo.webp' : 'logos/logo-' + theme + '.webp';
   var logo = document.getElementById('footer-logo');
-  if (logo) logo.src = theme === 'green' ? 'logos/logo.webp' : 'logos/logo-' + theme + '.webp';
+  if (logo) logo.src = logoSrc;
+  var aboutLogo = document.getElementById('about-logo');
+  if (aboutLogo) aboutLogo.src = logoSrc;
   var badge = document.getElementById('visitor-badge');
   var bc = badgeColors[theme] || badgeColors.green;
   if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color + '&hit=true';
@@ -1016,8 +1019,11 @@ function setTheme(theme) {
     document.body.className = 'theme-' + saved;
     var sel = document.getElementById('theme-select');
     if (sel) sel.value = saved;
+    var savedLogoSrc = saved === 'green' ? 'logos/logo.webp' : 'logos/logo-' + saved + '.webp';
     var logo = document.getElementById('footer-logo');
-    if (logo) logo.src = saved === 'green' ? 'logos/logo.webp' : 'logos/logo-' + saved + '.webp';
+    if (logo) logo.src = savedLogoSrc;
+    var aboutLogo = document.getElementById('about-logo');
+    if (aboutLogo) aboutLogo.src = savedLogoSrc;
     var badge = document.getElementById('visitor-badge');
     var bc = badgeColors[saved] || badgeColors.green;
     if (badge) badge.src = 'https://bullock.app:8733/api/counters/SaplingReports/badge.svg?labelColor=%23' + bc.label + '&color=%23' + bc.color + '&hit=true';

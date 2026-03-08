@@ -882,7 +882,7 @@
 </footer>
 
 <!-- Accessibility Statement Modal -->
-<div id="a11y-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="a11y-modal-title" onclick="if(event.target===this)closeModal('a11y-modal')">
+<div id="a11y-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="a11y-modal-title">
   <div class="modal">
     <div class="modal-header">
       <h2 id="a11y-modal-title">Accessibility Statement</h2>
@@ -898,6 +898,10 @@
 
 <script>
 var modalTrigger = null;
+document.getElementById('a11y-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal('a11y-modal');
+});
+
 function openModal(id) {
   modalTrigger = document.activeElement;
   var modal = document.getElementById(id);

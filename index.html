@@ -445,6 +445,8 @@
     <span style="margin: 0 10px; opacity: 0.5;">|</span>
     <button onclick="openModal('a11y-modal')" style="font-size: 0.75rem; padding: 3px 10px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15); color: #fff; cursor: pointer; font-family: inherit; font-weight: bold;">Accessibility</button>
     <span style="margin: 0 10px; opacity: 0.5;">|</span>
+    <button onclick="openModal('about-modal')" style="font-size: 0.75rem; padding: 3px 10px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15); color: #fff; cursor: pointer; font-family: inherit; font-weight: bold;">About</button>
+    <span style="margin: 0 10px; opacity: 0.5;">|</span>
     <button onclick="openModal('contact-modal')" style="font-size: 0.75rem; padding: 3px 10px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15); color: #fff; cursor: pointer; font-family: inherit; font-weight: bold;">Contact</button>
     <span style="margin: 0 10px; opacity: 0.5;">|</span>
     <label for="theme-select" style="font-size: 0.75rem;">Theme:</label>
@@ -931,6 +933,22 @@
   </div>
 </div>
 
+<!-- About Modal -->
+<div id="about-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="about-modal-title">About Sapling Reports</h2>
+      <button class="modal-close" onclick="closeModal('about-modal')" aria-label="Close about dialog">&times;</button>
+    </div>
+    <div class="modal-body" style="text-align: center;">
+      <img src="logos/logo.webp" alt="Sapling Reports Logo" id="about-logo" style="height: 64px; border-radius: 4px; margin-bottom: 12px;">
+      <p style="font-size: 1rem; font-weight: bold; margin-bottom: 4px;">Sapling Reports</p>
+      <p style="margin-bottom: 12px; color: #555;">Version 1.0.0</p>
+      <p style="font-size: 0.75rem; color: #666;">Copyright &copy; 2026 Sapling Reports. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 var modalTrigger = null;
 document.getElementById('a11y-modal').addEventListener('click', function(e) {
@@ -938,6 +956,9 @@ document.getElementById('a11y-modal').addEventListener('click', function(e) {
 });
 document.getElementById('contact-modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal('contact-modal');
+});
+document.getElementById('about-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal('about-modal');
 });
 
 function openModal(id) {
